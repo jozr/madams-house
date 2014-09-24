@@ -25,14 +25,19 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @den = Den.find(params[:den_id])
     @review = Review.find(params[:id])
   end
 
   def update
-    @den = Den.find(params[:den_id])
+    @den = Den.find_by(params[:den_id])
     @review = Review.find(params[:id])
-    if @review.update
-      redirect_to den_path(@den), notice: "Review updated."
+    if @review.update(review_params)
+      respond_to do |format|
+        format.html { redirect_to den_path(@den) }
+        format.js
+      end
+      flash[:notice] = "Review updated."
     else
       render 'edit'
     end
@@ -46,7 +51,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "Review deleted"
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js
+    end
   end
 
   private

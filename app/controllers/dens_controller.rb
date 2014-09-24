@@ -35,7 +35,11 @@ class DensController < ApplicationController
   def update
     @den = Den.find(params[:id])
     if @den.update
-      redirect_to den_path(@den), notice: 'The den has been updated.'
+      respond_to do |format|
+        format.html { redirect_to den_path(@den) }
+        format.js
+      end
+      flash[:notice] = 'The den has been updated.'
     else
       render 'edit'
     end
@@ -45,7 +49,10 @@ class DensController < ApplicationController
     @den = Den.find(params[:id])
     @den.destroy
     flash[:notice] =  "The den has been deleted."
-    redirect_to root_url
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js
+    end
   end
 
 

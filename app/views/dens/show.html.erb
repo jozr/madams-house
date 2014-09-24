@@ -6,10 +6,17 @@
   <%= link_to 'Add Review', new_den_review_path(@den), remote: true, id: 'review-btn' %>
 <% end %>
 
+<br>
 <p id='review_list'>
   <% @den.reviews.each do |review| %>
+  <div id='review_<%= review.id%>'>
     <%= review.user.email %> (Rating: <%= review.rating %>)<br />
     <%= review.content %><br />
+  </div>
+   <% if current_user && current_user.id == review.user.id %>
+      <%= link_to "edit", edit_den_review_path(@den, review), remote: true, id: 'review-edit' %> |
+      <%= link_to "delete", den_review_path(@den, review), remote: true, id: 'review-destroy' %><br>
+    <% end %>
     <br />
   <% end %>
 </p>

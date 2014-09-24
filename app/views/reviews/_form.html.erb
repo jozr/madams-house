@@ -1,5 +1,3 @@
-<h1>Add Review for <%= @den.name %></h1>
-
 <%= form_for [@review], remote: true, id: 'review-form' do |f| %>
   <% if @review.errors.any? %>
     <div class="error_messages">
