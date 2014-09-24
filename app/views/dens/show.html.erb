@@ -3,4 +3,6 @@
 
 <p><%= @den.description %></p>
 
-
+<%= form_for @den.reviews, remote: true do |f| %>
+  <%= button 'Add Review' %>
+<% end %>

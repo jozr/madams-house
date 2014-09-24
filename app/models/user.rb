@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :dens
+  has_many :reviews
 
 
 end
