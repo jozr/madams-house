@@ -1,0 +1,20 @@
+<h1>Add Review for <%= @den.name %></h1>
+
+<%= form_for [@review], remote: true, id: 'review-form' do |f| %>
+  <% if @review.errors.any? %>
+    <div class="error_messages">
+      <% @review.errors.full_messages.each do |message| %>
+        <p class='warning'><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field row">
+    <%= f.label :content %><br />
+    <%= f.text_area :content, cols: 30, rows: 10 %><br />
+    <%= f.label :Rating_out_of_five %><br />
+    <%= f.text_field :rating %><br />
+    <%= f.hidden_field :den_id, value: @den.id %>
+  </div>
+    <%= f.submit "Submit" %>
+<% end %>

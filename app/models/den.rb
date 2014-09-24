@@ -7,6 +7,14 @@ class Den < ActiveRecord::Base
   has_many :reviews
   belongs_to :user
 
-
-
+  def average_rating
+    sum = 0
+    counter = 0
+    self.reviews.each do |r|
+      sum += r.rating
+      counter += 1
+    end
+    average = sum / counter
+    average
+  end
 end

@@ -1,8 +1,15 @@
-<h1><%= @den.name %></h1>
-
+<h1><%= @den.name %> (Rating: <%= @den.average_rating %>)</h1>
 
 <p><%= @den.description %></p>
 
-<%= form_for @den.reviews, remote: true do |f| %>
-  <%= button 'Add Review' %>
+<%= form_for [@den, @review] do |f| %>
+  <%= link_to 'Add Review', new_den_review_path(@den), remote: true, id: 'review-btn' %>
 <% end %>
+
+<p id='review_list'>
+  <% @den.reviews.each do |review| %>
+    <%= review.user.email %> (Rating: <%= review.rating %>)<br />
+    <%= review.content %><br />
+    <br />
+  <% end %>
+</p>

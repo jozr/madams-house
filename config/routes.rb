@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :dens
+  resources :dens do
+    resources :reviews
+  end
+
+  resources :reviews
 end

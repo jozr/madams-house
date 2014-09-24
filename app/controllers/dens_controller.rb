@@ -12,7 +12,11 @@ class DensController < ApplicationController
   def create
     @den = Den.new(den_params)
     if @den.save
-      redirect_to root_url, notice: 'The den has been created.'
+      flash[:notice] = 'The den has been created.'
+      respond_to do |format|
+        format.html { redirect_to den_path(@den) }
+        format.js
+      end
     else
       render 'new'
     end
@@ -20,6 +24,8 @@ class DensController < ApplicationController
 
   def show
     @den = Den.find(params[:id])
+    @review = Review.new
+    @user = User.find_by(@review.user_id)
   end
 
   def edit
