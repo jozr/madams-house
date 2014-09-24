@@ -18,6 +18,7 @@ group :test, :development do
   gem 'devise'
   gem 'paperclip'
   gem 'rspec-rails'
+  gem 'better_errors'
 end
 
 group :test do

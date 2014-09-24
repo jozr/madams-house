@@ -1,0 +1,9 @@
+<h1>Madam's House</h1>
+
+<% @dens.each do |den| %>
+  <%= link_to den.name, den_path(den) %><br />
+<% end %>
+<br><br>
+<% if user_signed_in? %>
+  <%= link_to 'Add Den', new_den_path %>
+<% end %>
