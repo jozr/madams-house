@@ -14,7 +14,11 @@ class Den < ActiveRecord::Base
       sum += r.rating
       counter += 1
     end
-    average = sum / counter
+    if counter == 0
+      average = 'none'
+    else
+      average = sum / counter
+    end
     average
   end
 end

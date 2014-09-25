@@ -1,3 +1,5 @@
 $('.edit_review').hide();
 $('#review-edit').show();
-$('#review_list').append('<%= @review.content %>');
+$reviewToReplace = $('#review_<%= @review.id %>');
+$reviewToReplace.after('<%= j render @review %>');
+$reviewToReplace.remove();
