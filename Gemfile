@@ -13,9 +13,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0'
 gem 'spring'
 gem 'binding_of_caller'
+gem 'devise'
 
 group :test, :development do
-  gem 'devise'
   gem 'paperclip'
   gem 'rspec-rails'
   gem 'better_errors'
