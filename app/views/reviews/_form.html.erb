@@ -1,12 +1,6 @@
-<%= form_for [@review], remote: true, id: 'review-form' do |f| %>
-  <% if @review.errors.any? %>
-    <div class="error_messages">
-      <% @review.errors.full_messages.each do |message| %>
-        <p class='warning'><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
+<%= render 'layouts/error', :object => @review %>
 
+<%= form_for [@review], remote: true, id: 'review-form' do |f| %>
   <div class="field row">
     <%= f.label :content %><br />
     <%= f.text_area :content, cols: 30, rows: 10 %><br />

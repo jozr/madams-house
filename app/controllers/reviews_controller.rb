@@ -20,7 +20,8 @@ class ReviewsController < ApplicationController
         format.js
       end
     else
-      render 'new'
+      flash[:notice] = "You messed up."
+      redirect_to den_path(@den)
     end
   end
 
