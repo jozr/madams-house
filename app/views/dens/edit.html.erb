@@ -1,0 +1,19 @@
+<h1>Edit <%= @den.name %></h1>
+
+<%= form_for @den do |f| %>
+  <% if @den.errors.any? %>
+    <div class="error_messages">
+      <% @den.errors.full_messages.each do |message| %>
+        <p class='warning'><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field row">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %><br />
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+    <%= f.submit "Submit" %>
+<% end %>

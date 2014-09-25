@@ -20,6 +20,7 @@
 body {
   text-align: center;
   background-image: url('background.jpg');
+  font-family: 'IM Fell DW Pica SC', serif;
 }
 
 #white-body {
@@ -29,4 +30,20 @@ body {
   background-color: #ffffff;
   border: 1px solid black;
   opacity: 0.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Homemade Apple', cursive;
+}
+
+#den-info {
+  border-bottom: solid black 1px;
+}
+
+#show-reviews {
+  margin: 5%;
+}
+
+#review-visual {
+  margin: 25%, 5%, 25%, 5%;
 }

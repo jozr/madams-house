@@ -34,7 +34,7 @@ class DensController < ApplicationController
 
   def update
     @den = Den.find(params[:id])
-    if @den.update
+    if @den.update(den_params)
       respond_to do |format|
         format.html { redirect_to den_path(@den) }
         format.js

@@ -2,10 +2,10 @@
 
 <%= form_for [@review], remote: true, id: 'review-form' do |f| %>
   <div class="field row">
-    <%= f.label :content %><br />
-    <%= f.text_area :content, cols: 30, rows: 10 %><br />
     <%= f.label :Rating_out_of_five %><br />
     <%= f.text_field :rating %><br />
+    <%= f.label :content %><br />
+    <%= f.text_area :content, cols: 30, rows: 10 %><br />
     <%= f.hidden_field :den_id, value: @den.id %>
   </div>
     <%= f.submit "Submit" %>

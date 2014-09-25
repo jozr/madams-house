@@ -1,14 +1,25 @@
-<h1><%= @den.name %> (Rating: <%= @den.average_rating %>)</h1>
+<div id='den-info'>
+  <h1><%= @den.name %> (Rating: <%= @den.average_rating %>)</h1>
 
-<p><%= @den.description %></p>
-
-<%= form_for [@den, @review] do |f| %>
-  <%= link_to 'Add Review', new_den_review_path(@den), remote: true, id: 'review-btn' %>
-<% end %>
-
-<br>
-<div id='review_list'>
-  <% @den.reviews.each do |review| %>
-    <%= render review %>
+  <p><%= @den.description %></p>
+  <% if current_user %>
+    <% if current_user.id == @den.user_id %>
+      <%= link_to 'edit', edit_den_path(@den) %> |
+       <%= link_to 'delete', den_path(@den), :data => {:confirm => "You sure?",
+                                                  :method => "delete"}%>
+    <% end %>
   <% end %>
+</div>
+
+<div id='show-reviews'>
+  <%= form_for [@den, @review] do |f| %>
+    <%= link_to 'Add Review', new_den_review_path(@den), remote: true, id: 'review-btn' %>
+  <% end %>
+
+  <br>
+  <div id='review_list'>
+    <% @den.reviews.each do |review| %>
+      <%= render review %>
+    <% end %>
+  </div>
 </div>
